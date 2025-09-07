@@ -5,6 +5,8 @@ dotenv.config();
 
 const MNEMONICS = process.env.MNEMONICS || '';
 const getExecStuff = () => {
+    // const privateKey = process.env.PRIVATE_KEY;
+    // const keypair = Ed25519Keypair.fromSecretKey(privateKey);
     const keypair = Ed25519Keypair.deriveKeypair(MNEMONICS);
     const client = new SuiClient({
         url: getFullnodeUrl('testnet'),

@@ -12,7 +12,23 @@ async function buyTicket(eventId: string) {
     try {
         // Call the buy_ticket function from the Move contract
         tx.moveCall({
-            target: `${PACKAGE_ID}::ticket_management::buy_ticket`,
+            target: `${PACKAGE_ID}::ticket_management::grant_ticket`,
+            arguments: [
+                // Pass the event object
+                tx.object(eventId)
+            ]
+        });
+
+        tx.moveCall({
+            target: `${PACKAGE_ID}::ticket_management::grant_ticket`,
+            arguments: [
+                // Pass the event object
+                tx.object(eventId)
+            ]
+        });
+
+        tx.moveCall({
+            target: `${PACKAGE_ID}::ticket_management::grant_ticket`,
             arguments: [
                 // Pass the event object
                 tx.object(eventId)
